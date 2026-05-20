@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<style>
+		circle { fill: #1a1a1a; }
+		line { stroke: #1a1a1a; }
+		@media (prefers-color-scheme: dark) {
+			circle { fill: #e8e8e8; }
+			line { stroke: #e8e8e8; }
+		}
+	</style>
+	<circle cx="32" cy="10" r="5" />
+	<circle cx="47.56" cy="16.44" r="5" />
+	<circle cx="54" cy="32" r="5" />
+	<circle cx="32" cy="54" r="5" />
+	<circle cx="16.44" cy="47.56" r="5" />
+	<circle cx="10" cy="32" r="5" />
+	<circle cx="16.44" cy="16.44" r="5" />
+	<line x1="47.56" y1="47.56" x2="58" y2="58" stroke-width="10" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,38 @@
+[
+	{
+		"name": "cisco",
+		"url": "https://cisco.com",
+		"logo": "/logos/cisco.svg",
+		"description": "Networking and collaboration infrastructure integrating MoQ across media platforms."
+	},
+	{
+		"name": "cloudflare",
+		"url": "https://cloudflare.com",
+		"logo": "/logos/cloudflare.svg",
+		"description": "Global edge network running MoQ at scale across hundreds of cities."
+	},
+	{
+		"name": "fastly",
+		"url": "https://fastly.com",
+		"logo": "/logos/fastly.svg",
+		"description": "Edge cloud platform advancing low-latency media delivery with MoQ."
+	},
+	{
+		"name": "iroh",
+		"url": "https://iroh.computer",
+		"logo": "/logos/iroh.png",
+		"description": "Peer-to-peer networking library applying MoQ to direct-connection and generic pub/sub use cases."
+	},
+	{
+		"name": "moq.dev",
+		"url": "https://moq.dev",
+		"logo": "/logos/moq-dev.svg",
+		"description": "Open source MoQ server, client, and tooling for engineers."
+	},
+	{
+		"name": "mux",
+		"url": "https://mux.com",
+		"logo": "/logos/mux.svg",
+		"description": "Video infrastructure for developers. Driving production MoQ adoption across live streaming."
+	}
+]

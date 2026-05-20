@@ -1,0 +1,89 @@
+[
+	{
+		"category": "Relays and implementations",
+		"items": [
+			{
+				"name": "moq-dev/moq",
+				"url": "https://github.com/moq-dev/moq",
+				"stars": 1278,
+				"language": "Rust + TypeScript",
+				"description": "Reference MoQ implementation including moq-relay, moq-clock, and broadcasting tools."
+			},
+			{
+				"name": "cloudflare/moq-rs",
+				"url": "https://github.com/cloudflare/moq-rs",
+				"stars": 123,
+				"language": "Rust",
+				"description": "Rust implementation of the IETF MoQ Transport protocol, maintained at Cloudflare."
+			},
+			{
+				"name": "facebookexperimental/moxygen",
+				"url": "https://github.com/facebookexperimental/moxygen",
+				"stars": 107,
+				"language": "C++",
+				"description": "Meta's C++ implementation of the IETF MoQ protocol."
+			},
+			{
+				"name": "mengelbart/moqtransport",
+				"url": "https://github.com/mengelbart/moqtransport",
+				"stars": 83,
+				"language": "Go",
+				"description": "Go implementation of the MoQ Transport protocol."
+			},
+			{
+				"name": "moqtail/moqtail",
+				"url": "https://github.com/moqtail/moqtail",
+				"stars": 76,
+				"language": "TypeScript",
+				"description": "Draft-16 compliant MOQT publisher, subscriber, and relay libraries."
+			},
+			{
+				"name": "meetecho/imquic",
+				"url": "https://github.com/meetecho/imquic",
+				"stars": 73,
+				"language": "C",
+				"description": "QUIC library with RTP over QUIC (RoQ) and Media over QUIC (MoQT) support."
+			},
+			{
+				"name": "facebookexperimental/moq-go-server",
+				"url": "https://github.com/facebookexperimental/moq-go-server",
+				"stars": 50,
+				"language": "Go",
+				"description": "Experimental Meta relay optimized for low-latency media transfer, implementing IETF MoQ."
+			}
+		]
+	},
+	{
+		"category": "Tools and integrations",
+		"items": [
+			{
+				"name": "rafaelcaricio/gst-moq-pub",
+				"url": "https://github.com/rafaelcaricio/gst-moq-pub",
+				"stars": 17,
+				"language": "Rust",
+				"description": "GStreamer plugin that implements a MoQ publisher element."
+			},
+			{
+				"name": "englishm/libmoq",
+				"url": "https://github.com/englishm/libmoq",
+				"stars": 8,
+				"language": "Rust",
+				"description": "MoQ library with a C FFI for integration with FFmpeg and other native tools."
+			},
+			{
+				"name": "Eyevinn/warp-player",
+				"url": "https://github.com/Eyevinn/warp-player",
+				"stars": 8,
+				"language": "TypeScript",
+				"description": "Player for CMAF media over MoQ Transport using MSE playback."
+			},
+			{
+				"name": "gmarzot/aiomoqt",
+				"url": "https://github.com/gmarzot/aiomoqt",
+				"stars": 5,
+				"language": "Python",
+				"description": "Python MoQ Transport library."
+			}
+		]
+	}
+]

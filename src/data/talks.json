@@ -1,0 +1,82 @@
+[
+	{
+		"title": "MoQ: Not Another Tech Demo",
+		"speaker": "Luke Curley",
+		"date": "December 2025",
+		"runtime": "23:01",
+		"videoId": "BluV8WBGnHY",
+		"url": "https://www.youtube.com/watch?v=BluV8WBGnHY",
+		"thumbnail": "/thumbnails/BluV8WBGnHY.jpg",
+		"description": "Update on the state of MoQ beyond demos, into real applications."
+	},
+	{
+		"title": "MOQ vs. WebRTC: a Cloudflare panel discussion",
+		"speaker": "Renan Dincer, Mike English, Nils Ohlmeier",
+		"date": "November 2025",
+		"runtime": "1:05:47",
+		"videoId": "obRSaAEM4_k",
+		"url": "https://www.youtube.com/watch?v=obRSaAEM4_k",
+		"thumbnail": "/thumbnails/obRSaAEM4_k.jpg",
+		"description": "Cloudflare engineers discuss the trade-offs between MoQ and WebRTC, with use cases for each."
+	},
+	{
+		"title": "A QUIC update on MoQ and WebTransport",
+		"speaker": "Will Law",
+		"date": "September 2025",
+		"runtime": "32:53",
+		"videoId": "TouG9jG9_Jk",
+		"url": "https://www.youtube.com/watch?v=TouG9jG9_Jk",
+		"thumbnail": "/thumbnails/TouG9jG9_Jk.jpg",
+		"description": "Status update on MoQ and WebTransport from a long-time contributor at Akamai."
+	},
+	{
+		"title": "Replacing WebRTC with Media over QUIC",
+		"speaker": "Luke Curley",
+		"date": "February 2025",
+		"runtime": "20:38",
+		"videoId": "fe7wcKdZ8W4",
+		"url": "https://www.youtube.com/watch?v=fe7wcKdZ8W4",
+		"thumbnail": "/thumbnails/fe7wcKdZ8W4.jpg",
+		"description": "Why MoQ aims to replace WebRTC, RTMP/SRT, and HLS/DASH using WebTransport and WebCodecs."
+	},
+	{
+		"title": "DASH and Media-over-QUIC Transport face-off",
+		"speaker": "Ali C. Begen",
+		"date": "September 2024",
+		"runtime": "43:00",
+		"videoId": "3GRTV1U3bWw",
+		"url": "https://www.youtube.com/watch?v=3GRTV1U3bWw",
+		"thumbnail": "/thumbnails/3GRTV1U3bWw.jpg",
+		"description": "Quantitative performance comparison between Low-Latency DASH and MoQ Transport."
+	},
+	{
+		"title": "Media over QUIC contribution with Rust",
+		"speaker": "Mike English",
+		"date": "February 2024",
+		"runtime": "12:19",
+		"videoId": "Um5FUEMWfUg",
+		"url": "https://www.youtube.com/watch?v=Um5FUEMWfUg",
+		"thumbnail": "/thumbnails/Um5FUEMWfUg.jpg",
+		"description": "Practical experience implementing the MoQ protocols in Rust for broadcast-scale ultra-low latency streaming."
+	},
+	{
+		"title": "Cacheable live under 200ms glass to glass: It is MoQ",
+		"speaker": "Jordi Cenzano",
+		"date": "February 2024",
+		"runtime": "24:50",
+		"videoId": "-rDvtjMHnZ8",
+		"url": "https://www.youtube.com/watch?v=-rDvtjMHnZ8",
+		"thumbnail": "/thumbnails/-rDvtjMHnZ8.jpg",
+		"description": "An end-to-end MoQ proof of concept built with WebCodecs, WebTransport, and quic-go showing sub-200ms latency."
+	},
+	{
+		"title": "Low-Latency Video over QUIC",
+		"speaker": "Luke Curley",
+		"date": "December 2021",
+		"runtime": "15:41",
+		"videoId": "hG0nmy3Otg4",
+		"url": "https://www.youtube.com/watch?v=hG0nmy3Otg4",
+		"thumbnail": "/thumbnails/hG0nmy3Otg4.jpg",
+		"description": "Foundational early talk on low-latency video over QUIC by the creator of moq.dev."
+	}
+]

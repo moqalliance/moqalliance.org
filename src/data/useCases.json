@@ -1,0 +1,22 @@
+[
+	{
+		"title": "Live streaming at scale",
+		"description": "Sub-second latency live video and audio from one publisher to many viewers, with caching and fan-out built into the transport."
+	},
+	{
+		"title": "Real-time multiplayer",
+		"description": "Low-latency state sync for games and collaborative applications across many concurrent participants."
+	},
+	{
+		"title": "Live data fan-out",
+		"description": "Financial market data, sports feeds, telemetry, IoT sensor streams, and other one-to-many data distribution."
+	},
+	{
+		"title": "Browser-native low-latency",
+		"description": "Direct delivery to browsers over <a href='https://www.w3.org/TR/webtransport/'>WebTransport</a>, without plugins, server-side bridging, or protocol gymnastics."
+	},
+	{
+		"title": "Generic pub/sub and relay",
+		"description": "Publish/subscribe and data relay between services, regions, and clients on the open Internet."
+	}
+]

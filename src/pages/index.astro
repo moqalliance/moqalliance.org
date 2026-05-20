@@ -1,38 +1,766 @@
 ---
+import members from "../data/members.json";
+import standards from "../data/standards.json";
+import useCases from "../data/useCases.json";
+import getStarted from "../data/getStarted.json";
+import events from "../data/events.json";
+import resources from "../data/resources.json";
+import talks from "../data/talks.json";
+import repositories from "../data/repositories.json";
+import faqs from "../data/faqs.json";
 
+const siteUrl = "https://moqalliance.org";
+const ogImage = `${siteUrl}/logo.svg`;
+const description =
+	"The MoQ Alliance promotes adoption, interoperability, and open source implementations of Media over QUIC, a general-purpose transport for pub/sub at Internet scale.";
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<title>MoQ Alliance</title>
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content="MoQ Alliance" />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:url" content={siteUrl} />
+		<meta name="twitter:title" content="MoQ Alliance" />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 	</head>
 	<body>
 		<main>
-			<h1>MoQ Alliance</h1>
+			<header>
+				<img
+					class="logo"
+					src="/logo.svg"
+					alt="MoQ Alliance"
+					width="44"
+					height="44"
+				/>
+				<h1>MoQ Alliance</h1>
+				<p class="lede">
+					MoQ changes the economics of publish/subscribe at Internet
+					scale. Built on QUIC, it is a general-purpose transport for
+					fan-out: live media, live data, and any pub/sub workload.
+				</p>
+				<p>
+					The MoQ Alliance is for the engineers and organizations
+					building with MoQ. We are committed to making it a
+					successful, open, and interoperable protocol by fostering
+					community, promoting open source, and supporting many
+					independent implementations.
+				</p>
+				<p>
+					MoQ is standardized at the{" "}
+					<a href="https://www.ietf.org/">IETF</a>. The MoQ Alliance
+					works alongside the IETF to drive adoption, share knowledge,
+					and grow the ecosystem of people building with the protocol.
+				</p>
+			</header>
+
+			<section>
+				<h2>Why MoQ</h2>
+				<p>
+					MoQ targets one-to-many fan-out on the open Internet, with
+					sub-second latency and publish/subscribe semantics built
+					directly into the transport.{" "}
+					<a href="https://www.w3.org/TR/webrtc/">WebRTC</a> is
+					designed for peer-to-peer real-time communication and small
+					group calls.{" "}
+					<a href="https://www.rfc-editor.org/rfc/rfc8216.html">HLS</a
+					> and <a href="https://dashif.org/">DASH</a> deliver chunked
+					media over HTTP at multi-second latency. Raw{" "}
+					<a href="https://www.rfc-editor.org/rfc/rfc9000.html">QUIC</a
+					> is a transport without pub/sub or fan-out primitives. MoQ
+					sits between them, giving developers the latency of
+					real-time and the scale of HTTP video, on top of an open
+					standard.
+				</p>
+			</section>
+
+			<section>
+				<h2>Use cases</h2>
+				<dl>
+					{
+						useCases.map((u) => (
+							<>
+								<dt>{u.title}</dt>
+								<dd set:html={u.description} />
+							</>
+						))
+					}
+				</dl>
+			</section>
+
+			<section>
+				<h2>Get started</h2>
+				<p>
+					Try MoQ in two browser tabs: open{" "}
+					<a href="https://moq.dev/publish">moq.dev/publish</a> on one
+					and <a href="https://moq.dev/watch">moq.dev/watch</a> on the
+					other to see live media flow through Cloudflare's relay.
+				</p>
+				{
+					getStarted.map((path) => (
+						<>
+							<p class="subscribe-label">{path.title}</p>
+							<p>{path.intro}</p>
+							<ul>
+								{path.steps.map((s) => (
+									<li set:html={s} />
+								))}
+							</ul>
+						</>
+					))
+				}
+			</section>
+
+			<section>
+				<h2>What we do</h2>
+				<ul>
+					<li>
+						Promote MoQ adoption through education, meetups, and
+						content.
+					</li>
+					<li>Champion open source implementations of MoQ.</li>
+					<li>
+						Foster interoperability across many independent MoQ
+						servers and clients.
+					</li>
+					<li>
+						Build community around the engineers and organizations
+						using MoQ.
+					</li>
+					<li>
+						Make MoQ approachable for the developers building on top
+						of it.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Standards</h2>
+				<p>MoQ builds on a stack of open Internet standards.</p>
+				<dl>
+					{
+						standards.map((s) => (
+							<>
+								<dt>
+									<a href={s.url}>{s.name}</a>
+								</dt>
+								<dd>{s.description}</dd>
+							</>
+						))
+					}
+				</dl>
+			</section>
+
+			<section>
+				<h2>Open source repositories</h2>
+				{
+					repositories.map((cat) => (
+						<>
+							<p class="subscribe-label">{cat.category}</p>
+							<ul class="repos">
+								{cat.items.map((r) => (
+									<li class="repo">
+										<div class="repo-head">
+											<a class="repo-name" href={r.url}>
+												{r.name}
+											</a>
+											<span class="repo-stars">
+												★ {r.stars.toLocaleString()}
+											</span>
+										</div>
+										<div class="repo-meta">{r.language}</div>
+										<div class="repo-desc">
+											{r.description}
+										</div>
+									</li>
+								))}
+							</ul>
+						</>
+					))
+				}
+			</section>
+
+			<section>
+				<h2>Founding members</h2>
+				<div class="members">
+					{
+						members.map((m) => (
+							<a class="member" href={m.url}>
+								<div class="member-logo">
+									<img src={m.logo} alt="" />
+									<span class="member-logo-name">
+										{m.name}
+									</span>
+								</div>
+								<p class="member-desc">{m.description}</p>
+							</a>
+						))
+					}
+				</div>
+				<p class="note">
+					The MoQ Alliance is governed by a steering committee of its
+					founding members.
+				</p>
+			</section>
+
+			<section>
+				<h2>Get involved</h2>
+				<ul>
+					<li>
+						GitHub:{" "}
+						<a href="https://github.com/moqalliance">
+							github.com/moqalliance
+						</a>
+					</li>
+					<li>
+						Discord:{" "}
+						<a href="#">join the MoQ Alliance Discord</a>
+					</li>
+					<li>
+						IETF MoQ working group:{" "}
+						<a href="https://datatracker.ietf.org/wg/moq/about/">
+							datatracker.ietf.org/wg/moq
+						</a>
+					</li>
+				</ul>
+				<p class="subscribe-label">
+					Subscribe to MoQ Alliance updates:
+				</p>
+				<form class="subscribe" action="#" method="post">
+					<label class="sr-only" for="email">Email</label>
+					<input
+						id="email"
+						type="email"
+						name="email"
+						placeholder="you@example.com"
+						required
+					/>
+					<button type="submit">Subscribe</button>
+				</form>
+			</section>
+
+			<section>
+				<h2>Events</h2>
+				<dl>
+					{
+						events.map((e) => (
+							<>
+								<dt>
+									<a href={e.url}>{e.title}</a>
+								</dt>
+								<dd>{e.description}</dd>
+							</>
+						))
+					}
+				</dl>
+			</section>
+
+			<section>
+				<h2>Resources</h2>
+				<dl>
+					{
+						resources.map((r) => (
+							<>
+								<dt>
+									<a href={r.url}>{r.title}</a>
+								</dt>
+								<dd>{r.description}</dd>
+							</>
+						))
+					}
+				</dl>
+				<p class="subscribe-label">Talks</p>
+				<div class="talks">
+					{
+						talks.map((t) => (
+							<a class="talk" href={t.url}>
+								<img
+									class="talk-thumb"
+									src={t.thumbnail}
+									alt=""
+									loading="lazy"
+								/>
+								<div class="talk-meta">
+									<div class="talk-title">{t.title}</div>
+									<div class="talk-sub">
+										{t.speaker} · {t.date} · {t.runtime}
+									</div>
+									<div class="talk-desc">{t.description}</div>
+								</div>
+							</a>
+						))
+					}
+				</div>
+				<p class="note">
+					More resources will be added as the ecosystem grows.
+				</p>
+			</section>
+
+			<section>
+				<h2>Become a member</h2>
+				<p>
+					Interested in joining the MoQ Alliance as an organization?
+					Email{" "}
+					<a href="mailto:hello@moqalliance.org">
+						hello@moqalliance.org
+					</a>.
+				</p>
+			</section>
+
+			<section>
+				<h2>FAQ</h2>
+				<dl>
+					{
+						faqs.map((f) => (
+							<>
+								<dt>{f.q}</dt>
+								<dd set:html={f.a} />
+							</>
+						))
+					}
+				</dl>
+			</section>
+
+			<footer>
+				<ul class="footer-links">
+					<li>
+						<a href="https://github.com/moqalliance">GitHub</a>
+					</li>
+					<li>
+						<a href="https://datatracker.ietf.org/wg/moq/about/">
+							IETF MoQ WG
+						</a>
+					</li>
+					<li>
+						<a href="mailto:hello@moqalliance.org">
+							hello@moqalliance.org
+						</a>
+					</li>
+				</ul>
+				<p>moqalliance.org</p>
+			</footer>
 		</main>
+
 		<style>
+			:root {
+				color-scheme: light dark;
+				--bg: #ffffff;
+				--fg: #1a1a1a;
+				--muted: #6b7280;
+				--border: #e5e7eb;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--bg: #0d0d0d;
+					--fg: #e8e8e8;
+					--muted: #888888;
+					--border: #262626;
+				}
+			}
+
 			:global(html, body) {
 				margin: 0;
 				padding: 0;
-				height: 100%;
-				font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+				background: var(--bg);
+				color: var(--fg);
+				font-family:
+					"JetBrains Mono", "SF Mono", ui-monospace, Menlo, Monaco,
+					Consolas, "Liberation Mono", "Courier New", monospace;
+				font-size: 14.5px;
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
 			}
+
 			main {
+				max-width: 640px;
+				margin: 0 auto;
+				padding: 5rem 1.5rem 6rem;
+			}
+
+			.logo {
+				display: block;
+				width: 44px;
+				height: 44px;
+				margin: 0 0 1.5rem;
+			}
+
+			h1 {
+				font-size: 1rem;
+				font-weight: 600;
+				margin: 0 0 2.5rem;
+				letter-spacing: 0;
+			}
+
+			h2 {
+				font-size: 0.75rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: var(--muted);
+				margin: 4rem 0 1.5rem;
+			}
+
+			p {
+				margin: 0 0 1.25rem;
+			}
+
+			.lede {
+				margin-bottom: 1.5rem;
+			}
+
+			.note {
+				font-size: 0.8rem;
+				color: var(--muted);
+				margin-top: 2.5rem;
+			}
+
+			ul {
+				padding-left: 1.5rem;
+				margin: 0;
+				list-style: none;
+			}
+
+			ul li {
+				margin-bottom: 0.6rem;
+				position: relative;
+			}
+
+			ul li::before {
+				content: "—";
+				position: absolute;
+				left: -1.5rem;
+				color: var(--muted);
+			}
+
+			.members {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem 1.25rem;
+			}
+
+			a.member {
+				margin: 0;
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+
+			a.member:hover .member-logo {
+				border-color: var(--fg);
+			}
+
+			.member-logo {
+				position: relative;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				min-height: 100vh;
+				height: 80px;
+				width: 100%;
+				border: 1px solid var(--border);
+				border-radius: 3px;
+				margin-bottom: 0.75rem;
+				background: transparent;
+				transition: border-color 0.15s ease;
 			}
-			h1 {
-				font-size: clamp(2rem, 8vw, 5rem);
-				font-weight: 600;
-				letter-spacing: -0.02em;
+
+			.member-logo img {
+				position: absolute;
+				left: 0.85rem;
+				top: 50%;
+				transform: translateY(-50%);
+				height: 40px;
+				width: 40px;
+				object-fit: contain;
+			}
+
+			.member-logo-name {
+				font-size: 0.9rem;
+				color: var(--fg);
+			}
+
+			.member-desc {
+				font-size: 0.8rem;
+				color: var(--muted);
+				line-height: 1.55;
 				margin: 0;
+			}
+
+			dl {
+				margin: 0;
+			}
+
+			dt {
+				font-weight: 600;
+				margin-top: 1.75rem;
+				color: var(--fg);
+			}
+
+			dt:first-child {
+				margin-top: 0;
+			}
+
+			dd {
+				margin: 0.4rem 0 0;
+				color: var(--muted);
+			}
+
+			.subscribe-label {
+				margin: 2.75rem 0 0.75rem;
+				font-weight: 600;
+				color: var(--fg);
+			}
+
+			.repos {
+				padding: 0;
+				margin: 0 0 0.5rem;
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 1.25rem;
+			}
+
+			.repos .repo {
+				margin: 0;
+				padding: 0;
+				position: static;
+			}
+
+			.repos .repo::before {
+				content: none;
+			}
+
+			.repo-head {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				gap: 0.75rem;
+				margin-bottom: 0.2rem;
+			}
+
+			.repo-name {
+				font-weight: 600;
+			}
+
+			.repo-stars {
+				font-size: 0.8rem;
+				color: var(--muted);
+				white-space: nowrap;
+				font-variant-numeric: tabular-nums;
+			}
+
+			.repo-meta {
+				font-size: 0.75rem;
+				color: var(--muted);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				margin-bottom: 0.35rem;
+			}
+
+			.repo-desc {
+				font-size: 0.82rem;
+				color: var(--muted);
+				line-height: 1.5;
+			}
+
+			.talks {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+
+			a.talk {
+				display: flex;
+				gap: 1rem;
+				align-items: flex-start;
+				text-decoration: none;
+				color: inherit;
+			}
+
+			.talk-thumb {
+				width: 160px;
+				aspect-ratio: 16 / 9;
+				object-fit: cover;
+				border-radius: 3px;
+				border: 1px solid var(--border);
+				flex-shrink: 0;
+				transition: border-color 0.15s ease;
+				background: var(--border);
+			}
+
+			a.talk:hover .talk-thumb {
+				border-color: var(--fg);
+			}
+
+			a.talk:hover .talk-title {
+				text-decoration-thickness: 2px;
+			}
+
+			.talk-meta {
+				flex: 1;
+				min-width: 0;
+			}
+
+			.talk-title {
+				font-weight: 600;
+				color: var(--fg);
+				text-decoration: underline;
+				text-underline-offset: 3px;
+				text-decoration-thickness: 1px;
+				margin-bottom: 0.3rem;
+				line-height: 1.4;
+			}
+
+			.talk-sub {
+				font-size: 0.78rem;
+				color: var(--muted);
+				margin-bottom: 0.45rem;
+			}
+
+			.talk-desc {
+				font-size: 0.82rem;
+				color: var(--muted);
+				line-height: 1.5;
+			}
+
+			.subscribe {
+				display: flex;
+				gap: 0.5rem;
+				margin: 0;
+			}
+
+			.subscribe input {
+				flex: 1;
+				min-width: 0;
+				font: inherit;
+				padding: 0.55rem 0.75rem;
+				background: transparent;
+				color: var(--fg);
+				border: 1px solid var(--border);
+				border-radius: 3px;
+				outline: none;
+			}
+
+			.subscribe input:focus {
+				border-color: var(--fg);
+			}
+
+			.subscribe input::placeholder {
+				color: var(--muted);
+			}
+
+			.subscribe button {
+				font: inherit;
+				padding: 0.55rem 1rem;
+				background: var(--fg);
+				color: var(--bg);
+				border: 1px solid var(--fg);
+				border-radius: 3px;
+				cursor: pointer;
+				white-space: nowrap;
+			}
+
+			.subscribe button:hover {
+				opacity: 0.85;
+			}
+
+			.sr-only {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border: 0;
+			}
+
+			footer {
+				margin-top: 6rem;
+				padding-top: 1.5rem;
+				border-top: 1px solid var(--border);
+				font-size: 0.75rem;
+				color: var(--muted);
+			}
+
+			footer p {
+				margin: 1rem 0 0;
+			}
+
+			.footer-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1.25rem;
+				padding: 0;
+				margin: 0;
+			}
+
+			.footer-links li {
+				margin: 0;
+				padding: 0;
+			}
+
+			.footer-links li::before {
+				content: none;
+			}
+
+			a {
+				color: var(--fg);
+				text-decoration: underline;
+				text-underline-offset: 3px;
+				text-decoration-thickness: 1px;
+			}
+
+			code {
+				font-family: inherit;
+				background: var(--border);
+				padding: 0.05em 0.4em;
+				border-radius: 2px;
+				font-size: 0.92em;
+			}
+
+			::selection {
+				background: var(--fg);
+				color: var(--bg);
+			}
+
+			@media (max-width: 520px) {
+				main {
+					padding: 3rem 1.25rem 4rem;
+				}
+				.members {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+				h2 {
+					margin: 3rem 0 1.25rem;
+				}
+				.subscribe {
+					flex-direction: column;
+				}
+				a.talk {
+					flex-direction: column;
+					gap: 0.75rem;
+				}
+				.talk-thumb {
+					width: 100%;
+					max-width: 320px;
+				}
 			}
 		</style>
 	</body>

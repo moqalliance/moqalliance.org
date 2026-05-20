@@ -1,0 +1,42 @@
+[
+	{
+		"q": "Where is MoQ being developed?",
+		"a": "Media over QUIC is developed and standardized at the <a href='https://www.ietf.org/'>IETF</a> (Internet Engineering Task Force), in the <a href='https://datatracker.ietf.org/wg/moq/about/'>MoQ working group</a>."
+	},
+	{
+		"q": "What is the IETF?",
+		"a": "The Internet Engineering Task Force is the open standards body responsible for the Internet's core protocols, including <a href='https://www.rfc-editor.org/rfc/rfc9293.html'>TCP</a>, <a href='https://www.rfc-editor.org/rfc/rfc9110.html'>HTTP</a>, <a href='https://www.rfc-editor.org/rfc/rfc8446.html'>TLS</a>, <a href='https://www.rfc-editor.org/rfc/rfc9000.html'>QUIC</a>, and <a href='https://datatracker.ietf.org/wg/moq/about/'>MoQ</a>. It operates through open working groups and rough consensus."
+	},
+	{
+		"q": "What does the MoQ Alliance do?",
+		"a": "We promote the use cases, diversity, and interoperability of MoQ as an open protocol through education, community programs, and active support of multiple independent implementations."
+	},
+	{
+		"q": "How does MoQ compare to WebRTC?",
+		"a": "<a href='https://www.w3.org/TR/webrtc/'>WebRTC</a> is designed for peer-to-peer real-time communication and small group calls, with complex signaling and tight latency. MoQ is designed for one-to-many fan-out at Internet scale, with publish/subscribe semantics on top of QUIC. They solve different problems and can coexist."
+	},
+	{
+		"q": "Is MoQ production ready?",
+		"a": "<a href='https://datatracker.ietf.org/doc/draft-ietf-moq-transport/'>MOQT</a> is an active IETF draft and the protocol is still evolving. Early production deployments and interoperability between independent implementations are happening today. The protocol is maturing rapidly."
+	},
+	{
+		"q": "How can I try MoQ today?",
+		"a": "Several open source implementations are available, including <a href='https://moq.dev'>moq.dev</a>. The <a href='https://datatracker.ietf.org/wg/moq/about/'>IETF MoQ working group page</a> links to current implementations and tooling."
+	},
+	{
+		"q": "Who is running MoQ in production?",
+		"a": "Members of the MoQ Alliance and other organizations in the working group are actively deploying MoQ. Specific deployment details are published by each operator."
+	},
+	{
+		"q": "How do I contribute?",
+		"a": "Join the <a href='https://datatracker.ietf.org/wg/moq/about/'>IETF MoQ working group</a> mailing list, attend working group meetings, contribute to open source implementations, or email the MoQ Alliance directly."
+	},
+	{
+		"q": "What is OpenMoQ?",
+		"a": "OpenMoQ is an open source effort producing freely available implementations and tooling around the MoQ protocol."
+	},
+	{
+		"q": "How do the MoQ Alliance and OpenMoQ relate?",
+		"a": "The MoQ Alliance is an industry coalition advocating for the protocol's adoption and interoperability. OpenMoQ is an open source community producing implementations and shared tooling. The Alliance promotes and supports open source efforts like OpenMoQ. The two are distinct organizations."
+	}
+]
