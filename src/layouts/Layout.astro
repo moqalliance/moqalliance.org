@@ -1,0 +1,65 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+	description?: string;
+	noindex?: boolean;
+	og?: boolean;
+}
+
+const {
+	title,
+	description,
+	noindex = false,
+	og = true,
+} = Astro.props;
+
+const siteUrl = "https://moqalliance.org";
+const ogImage = `${siteUrl}/logo.svg`;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		{description && <meta name="description" content={description} />}
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+		{
+			og && (
+				<>
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content={siteUrl} />
+					<meta property="og:title" content={title} />
+					{description && (
+						<meta
+							property="og:description"
+							content={description}
+						/>
+					)}
+					<meta property="og:image" content={ogImage} />
+
+					<meta name="twitter:card" content="summary" />
+					<meta name="twitter:url" content={siteUrl} />
+					<meta name="twitter:title" content={title} />
+					{description && (
+						<meta
+							name="twitter:description"
+							content={description}
+						/>
+					)}
+					<meta name="twitter:image" content={ogImage} />
+				</>
+			)
+		}
+	</head>
+	<body>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>

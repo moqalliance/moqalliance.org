@@ -20,16 +20,6 @@
 		"description": "Cloudflare engineers discuss the trade-offs between MoQ and WebRTC, with use cases for each."
 	},
 	{
-		"title": "A QUIC update on MoQ and WebTransport",
-		"speaker": "Will Law",
-		"date": "September 2025",
-		"runtime": "32:53",
-		"videoId": "TouG9jG9_Jk",
-		"url": "https://www.youtube.com/watch?v=TouG9jG9_Jk",
-		"thumbnail": "/thumbnails/TouG9jG9_Jk.jpg",
-		"description": "Status update on MoQ and WebTransport from a long-time contributor at Akamai."
-	},
-	{
 		"title": "Replacing WebRTC with Media over QUIC",
 		"speaker": "Luke Curley",
 		"date": "February 2025",
@@ -38,16 +28,6 @@
 		"url": "https://www.youtube.com/watch?v=fe7wcKdZ8W4",
 		"thumbnail": "/thumbnails/fe7wcKdZ8W4.jpg",
 		"description": "Why MoQ aims to replace WebRTC, RTMP/SRT, and HLS/DASH using WebTransport and WebCodecs."
-	},
-	{
-		"title": "DASH and Media-over-QUIC Transport face-off",
-		"speaker": "Ali C. Begen",
-		"date": "September 2024",
-		"runtime": "43:00",
-		"videoId": "3GRTV1U3bWw",
-		"url": "https://www.youtube.com/watch?v=3GRTV1U3bWw",
-		"thumbnail": "/thumbnails/3GRTV1U3bWw.jpg",
-		"description": "Quantitative performance comparison between Low-Latency DASH and MoQ Transport."
 	},
 	{
 		"title": "Media over QUIC contribution with Rust",

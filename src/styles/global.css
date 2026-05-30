@@ -1,0 +1,375 @@
+:root {
+	color-scheme: light dark;
+	--bg: #ffffff;
+	--fg: #1a1a1a;
+	--muted: #6b7280;
+	--border: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #0d0d0d;
+		--fg: #e8e8e8;
+		--muted: #888888;
+		--border: #262626;
+	}
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--fg);
+	font-family:
+		"JetBrains Mono", "SF Mono", ui-monospace, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+	font-size: 14.5px;
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+main {
+	max-width: 640px;
+	margin: 0 auto;
+	padding: 5rem 1.5rem 6rem;
+}
+
+.logo {
+	display: block;
+	width: 44px;
+	height: 44px;
+	margin: 0 0 1.5rem;
+}
+
+h1 {
+	font-size: 1rem;
+	font-weight: 600;
+	margin: 0 0 2.5rem;
+	letter-spacing: 0;
+}
+
+h2 {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--muted);
+	margin: 4rem 0 1.5rem;
+}
+
+p {
+	margin: 0 0 1.25rem;
+}
+
+.lede {
+	margin-bottom: 1.5rem;
+}
+
+.note {
+	font-size: 0.8rem;
+	color: var(--muted);
+	margin-top: 2.5rem;
+}
+
+ul {
+	padding-left: 1.5rem;
+	margin: 0;
+	list-style: none;
+}
+
+ul li {
+	margin-bottom: 0.6rem;
+	position: relative;
+}
+
+ul li::before {
+	content: "—";
+	position: absolute;
+	left: -1.5rem;
+	color: var(--muted);
+}
+
+.members {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem 1.25rem;
+}
+
+a.member {
+	margin: 0;
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+a.member:hover .member-logo {
+	border-color: var(--fg);
+}
+
+.member-logo {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80px;
+	width: 100%;
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	margin-bottom: 0.75rem;
+	background: transparent;
+	transition: border-color 0.15s ease;
+}
+
+.member-logo img {
+	position: absolute;
+	left: 0.85rem;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 40px;
+	width: 40px;
+	object-fit: contain;
+}
+
+.member-logo-name {
+	font-size: 0.9rem;
+	color: var(--fg);
+}
+
+dl {
+	margin: 0;
+}
+
+dt {
+	font-weight: 600;
+	margin-top: 1.75rem;
+	color: var(--fg);
+}
+
+dt:first-child {
+	margin-top: 0;
+}
+
+dd {
+	margin: 0.4rem 0 0;
+	color: var(--muted);
+}
+
+.subscribe-label {
+	margin: 2.75rem 0 0.75rem;
+	font-weight: 600;
+	color: var(--fg);
+}
+
+.involved {
+	padding-left: 1.75rem;
+	margin: 0;
+	list-style: none;
+}
+
+.involved li {
+	margin-bottom: 0.7rem;
+	position: relative;
+}
+
+.involved li::before {
+	content: none;
+}
+
+.involved-icon {
+	position: absolute;
+	left: -1.75rem;
+	top: 0.25rem;
+	width: 14px;
+	height: 14px;
+	fill: currentColor;
+	color: var(--muted);
+	flex-shrink: 0;
+}
+
+.talks {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+a.talk {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	text-decoration: none;
+	color: inherit;
+}
+
+.talk-thumb {
+	width: 160px;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border-radius: 3px;
+	border: 1px solid var(--border);
+	flex-shrink: 0;
+	transition: border-color 0.15s ease;
+	background: var(--border);
+}
+
+a.talk:hover .talk-thumb {
+	border-color: var(--fg);
+}
+
+a.talk:hover .talk-title {
+	text-decoration-thickness: 2px;
+}
+
+.talk-meta {
+	flex: 1;
+	min-width: 0;
+}
+
+.talk-title {
+	font-weight: 600;
+	color: var(--fg);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	margin-bottom: 0.3rem;
+	line-height: 1.4;
+}
+
+.talk-sub {
+	font-size: 0.78rem;
+	color: var(--muted);
+	margin-bottom: 0.45rem;
+}
+
+.talk-desc {
+	font-size: 0.82rem;
+	color: var(--muted);
+	line-height: 1.5;
+}
+
+.subscribe {
+	display: flex;
+	gap: 0.5rem;
+	margin: 0;
+}
+
+.subscribe input {
+	flex: 1;
+	min-width: 0;
+	font: inherit;
+	padding: 0.55rem 0.75rem;
+	background: transparent;
+	color: var(--fg);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	outline: none;
+}
+
+.subscribe input:focus {
+	border-color: var(--fg);
+}
+
+.subscribe input::placeholder {
+	color: var(--muted);
+}
+
+.subscribe button {
+	font: inherit;
+	padding: 0.55rem 1rem;
+	background: var(--fg);
+	color: var(--bg);
+	border: 1px solid var(--fg);
+	border-radius: 3px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.subscribe button:hover {
+	opacity: 0.85;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+footer {
+	margin-top: 6rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border);
+	font-size: 0.75rem;
+	color: var(--muted);
+}
+
+footer p {
+	margin: 1rem 0 0;
+}
+
+.footer-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-links li {
+	margin: 0;
+	padding: 0;
+}
+
+.footer-links li::before {
+	content: none;
+}
+
+a {
+	color: var(--fg);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+}
+
+code {
+	font-family: inherit;
+	background: var(--border);
+	padding: 0.05em 0.4em;
+	border-radius: 2px;
+	font-size: 0.92em;
+}
+
+::selection {
+	background: var(--fg);
+	color: var(--bg);
+}
+
+@media (max-width: 520px) {
+	main {
+		padding: 3rem 1.25rem 4rem;
+	}
+	.members {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+	h2 {
+		margin: 3rem 0 1.25rem;
+	}
+	.subscribe {
+		flex-direction: column;
+	}
+	a.talk {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.talk-thumb {
+		width: 100%;
+		max-width: 320px;
+	}
+}

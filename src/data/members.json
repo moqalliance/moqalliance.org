@@ -1,38 +1,42 @@
 [
 	{
-		"name": "cisco",
+		"name": "AWS",
+		"url": "https://aws.amazon.com",
+		"logo": "/logos/aws.png"
+	},
+	{
+		"name": "Bitmovin",
+		"url": "https://bitmovin.com",
+		"logo": "/logos/bitmovin.png"
+	},
+	{
+		"name": "Cisco",
 		"url": "https://cisco.com",
-		"logo": "/logos/cisco.svg",
-		"description": "Networking and collaboration infrastructure integrating MoQ across media platforms."
+		"logo": "/logos/cisco.svg"
 	},
 	{
-		"name": "cloudflare",
+		"name": "Cloudflare",
 		"url": "https://cloudflare.com",
-		"logo": "/logos/cloudflare.svg",
-		"description": "Global edge network running MoQ at scale across hundreds of cities."
+		"logo": "/logos/cloudflare.svg"
 	},
 	{
-		"name": "fastly",
+		"name": "Fastly",
 		"url": "https://fastly.com",
-		"logo": "/logos/fastly.svg",
-		"description": "Edge cloud platform advancing low-latency media delivery with MoQ."
+		"logo": "/logos/fastly.svg"
 	},
 	{
-		"name": "iroh",
+		"name": "Iroh",
 		"url": "https://iroh.computer",
-		"logo": "/logos/iroh.png",
-		"description": "Peer-to-peer networking library applying MoQ to direct-connection and generic pub/sub use cases."
+		"logo": "/logos/iroh.png"
 	},
 	{
 		"name": "moq.dev",
 		"url": "https://moq.dev",
-		"logo": "/logos/moq-dev.svg",
-		"description": "Open source MoQ server, client, and tooling for engineers."
+		"logo": "/logos/moq-dev.svg"
 	},
 	{
-		"name": "mux",
+		"name": "Mux",
 		"url": "https://mux.com",
-		"logo": "/logos/mux.svg",
-		"description": "Video infrastructure for developers. Driving production MoQ adoption across live streaming."
+		"logo": "/logos/mux.svg"
 	}
 ]

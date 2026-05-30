@@ -3,10 +3,10 @@
 		"title": "Broadcasting and live media",
 		"intro": "Connect a publisher to a relay, then any number of watchers to the same relay.",
 		"steps": [
-			"<strong>Relay:</strong> Use Cloudflare's free <a href='https://developers.cloudflare.com/moq/'>MoQ technical preview</a> at <code>relay.cloudflare.mediaoverquic.com</code>, or self-host with <a href='https://github.com/moq-dev/moq/tree/main/rs/moq-relay'>moq-relay</a>.",
-			"<strong>Publish:</strong> Try the <a href='https://moq.dev/publish'>browser publisher</a>, or use the <a href='https://github.com/moq-dev/moq/tree/main/js'>@moq web components</a> in your application.",
-			"<strong>Watch:</strong> Try the <a href='https://moq.dev/watch'>browser watcher</a>, or use the <a href='https://github.com/moq-dev/moq/tree/main/js'>@moq web components</a> in your application.",
-			"<strong>Native pipelines:</strong> Use the Rust <a href='https://github.com/moq-dev/moq/tree/main/rs/hang'>hang</a> library to import MP4, pipe FFmpeg, or publish from GStreamer."
+			"<strong>Relay:</strong> Use Cloudflare's free <a href='https://developers.cloudflare.com/moq/'>MoQ technical preview</a> at <code>relay.cloudflare.mediaoverquic.com</code>, or self-host with <a href='https://github.com/moq-dev/moq/tree/main/rs/moq-relay'>moq-relay</a> (development lead by moq.dev), or <a href='https://github.com/cloudflare/moq-rs'>moq-rs</a> (open source implementation that Cloudflare runs in their relay)",
+			"<strong>Publish:</strong> Try the <a href='https://moq.dev/publish'>moq.dev browser publisher</a>, or use the <a href='https://github.com/moq-dev/moq/tree/main/js'>@moq web components</a> in your JavaScript web application.",
+			"<strong>Watch:</strong> Try the <a href='https://moq.dev/watch'>moq.dev browser watcher</a>, or use the <a href='https://github.com/moq-dev/moq/tree/main/js'>JavaScript @moq web components</a> in your web application.",
+			"<strong>Native pipelines:</strong> Use the <a href='https://github.com/moq-dev/moq/tree/main/rs/hang'>moq.dev hang</a> library or <a href='https://crates.io/crates/moq-pub'>moq-pub/moq-sub Rust crates</a> to import MP4, pipe FFmpeg, or publish from GStreamer."
 		]
 	},
 	{
@@ -17,7 +17,6 @@
 			"<strong>Rust:</strong> <a href='https://github.com/cloudflare/moq-rs'>cloudflare/moq-rs</a>",
 			"<strong>C++:</strong> <a href='https://github.com/facebookexperimental/moxygen'>facebookexperimental/moxygen</a>",
 			"<strong>Python:</strong> <a href='https://github.com/gmarzot/aiomoqt'>gmarzot/aiomoqt</a>",
-			"<strong>Peer-to-peer:</strong> <a href='https://iroh.computer'>Iroh</a> for direct connections without a relay.",
 			"<strong>Relay:</strong> Cloudflare's preview at <code>relay.cloudflare.mediaoverquic.com</code> works for arbitrary tracks, not just media."
 		]
 	}

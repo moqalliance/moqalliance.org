@@ -21,7 +21,7 @@
 	},
 	{
 		"q": "How can I try MoQ today?",
-		"a": "Several open source implementations are available, including <a href='https://moq.dev'>moq.dev</a>. The <a href='https://datatracker.ietf.org/wg/moq/about/'>IETF MoQ working group page</a> links to current implementations and tooling."
+		"a": "Several open source implementations are available, including <a href='https://moq.dev'>moq.dev</a>. See our <a href='/get-started'>developer page</a> for implementations, libraries, and tooling."
 	},
 	{
 		"q": "Who is running MoQ in production?",
@@ -30,13 +30,5 @@
 	{
 		"q": "How do I contribute?",
 		"a": "Join the <a href='https://datatracker.ietf.org/wg/moq/about/'>IETF MoQ working group</a> mailing list, attend working group meetings, contribute to open source implementations, or email the MoQ Alliance directly."
-	},
-	{
-		"q": "What is OpenMoQ?",
-		"a": "OpenMoQ is an open source effort producing freely available implementations and tooling around the MoQ protocol."
-	},
-	{
-		"q": "How do the MoQ Alliance and OpenMoQ relate?",
-		"a": "The MoQ Alliance is an industry coalition advocating for the protocol's adoption and interoperability. OpenMoQ is an open source community producing implementations and shared tooling. The Alliance promotes and supports open source efforts like OpenMoQ. The two are distinct organizations."
 	}
 ]
