@@ -1,8 +1,0 @@
-{
-	"name": "moqalliance-email",
-	"main": "src/index.js",
-	"compatibility_date": "2026-05-20",
-	"observability": {
-		"enabled": true
-	}
-}
