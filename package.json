@@ -11,7 +11,8 @@
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:email": "wrangler deploy -c workers/email/wrangler.jsonc"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",
