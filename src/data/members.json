@@ -20,6 +20,11 @@
 		"logo": "/logos/cloudflare.svg"
 	},
 	{
+		"name": "Datum",
+		"url": "https://www.datum.net",
+		"logo": "/logos/datum.svg"
+	},
+	{
 		"name": "Fastly",
 		"url": "https://fastly.com",
 		"logo": "/logos/fastly.svg"
