@@ -1,5 +1,10 @@
 [
 	{
+		"name": "AWS",
+		"url": "https://aws.amazon.com",
+		"logo": "/logos/aws.png"
+	},
+	{
 		"name": "Bitmovin",
 		"url": "https://bitmovin.com",
 		"logo": "/logos/bitmovin.png"
