@@ -111,7 +111,7 @@ a.member:hover .member-logo {
 .member-logo {
 	display: flex;
 	align-items: center;
-	gap: 0.9rem;
+	gap: 1.25rem;
 	padding: 0 0.75rem;
 	height: 64px;
 	width: 100%;
