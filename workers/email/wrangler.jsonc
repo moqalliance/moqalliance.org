@@ -1,0 +1,9 @@
+{
+	"name": "moqalliance-email",
+	"main": "src/index.js",
+	"compatibility_date": "2026-05-20",
+	"compatibility_flags": ["global_fetch_strictly_public"],
+	"observability": {
+		"enabled": true
+	}
+}
