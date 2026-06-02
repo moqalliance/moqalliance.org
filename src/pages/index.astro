@@ -48,45 +48,6 @@ const description =
 	</section>
 
 	<section>
-		<h2>Media</h2>
-		<div class="talks">
-			{
-				talks.map((t) => (
-					<a class="talk" href={t.url}>
-						<img
-							class="talk-thumb"
-							src={t.thumbnail}
-							alt=""
-							loading="lazy"
-						/>
-						<div class="talk-meta">
-							<div class="talk-title">{t.title}</div>
-							<div class="talk-sub">
-								{t.speaker} · {t.date} · {t.runtime}
-							</div>
-							<div class="talk-desc">{t.description}</div>
-						</div>
-					</a>
-				))
-			}
-		</div>
-	</section>
-
-	<section>
-		<h2>FAQ</h2>
-		<dl>
-			{
-				faqs.map((f) => (
-					<>
-						<dt>{f.q}</dt>
-						<dd set:html={f.a} />
-					</>
-				))
-			}
-		</dl>
-	</section>
-
-	<section>
 		<h2>Get involved</h2>
 		<ul class="involved">
 			<li>
@@ -129,6 +90,45 @@ const description =
 			/>
 			<button type="submit">Subscribe</button>
 		</form>
+	</section>
+
+	<section>
+		<h2>Media</h2>
+		<div class="talks">
+			{
+				talks.map((t) => (
+					<a class="talk" href={t.url}>
+						<img
+							class="talk-thumb"
+							src={t.thumbnail}
+							alt=""
+							loading="lazy"
+						/>
+						<div class="talk-meta">
+							<div class="talk-title">{t.title}</div>
+							<div class="talk-sub">
+								{t.speaker} · {t.date} · {t.runtime}
+							</div>
+							<div class="talk-desc">{t.description}</div>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<section>
+		<h2>FAQ</h2>
+		<dl>
+			{
+				faqs.map((f) => (
+					<>
+						<dt>{f.q}</dt>
+						<dd set:html={f.a} />
+					</>
+				))
+			}
+		</dl>
 	</section>
 
 	<footer>
