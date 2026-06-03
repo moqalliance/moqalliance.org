@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
 import members from "../data/members.json";
 import talks from "../data/talks.json";
 import faqs from "../data/faqs.json";
@@ -10,13 +11,7 @@ const description =
 
 <Layout title="MoQ Alliance" description={description}>
 	<header>
-		<img
-			class="logo"
-			src="/logo.svg"
-			alt="MoQ Alliance"
-			width="44"
-			height="44"
-		/>
+		<Logo />
 		<h1>MoQ Alliance</h1>
 		<p class="lede">
 			The MoQ Alliance is an industry organization dedicated to making

@@ -1,0 +1,34 @@
+---
+// MoQ Alliance logo. Inlined SVG so it inherits currentColor from CSS
+// and respects dark mode reliably across browsers. (When loaded via
+// <img src>, the SVG-internal @media (prefers-color-scheme) query is
+// flaky.)
+const { class: className = "logo", size = 44 } = Astro.props;
+---
+
+<svg
+	class={className}
+	width={size}
+	height={size}
+	viewBox="0 0 64 64"
+	xmlns="http://www.w3.org/2000/svg"
+	role="img"
+	aria-label="MoQ Alliance"
+>
+	<circle cx="32" cy="10" r="5" fill="currentColor" />
+	<circle cx="47.56" cy="16.44" r="5" fill="currentColor" />
+	<circle cx="54" cy="32" r="5" fill="currentColor" />
+	<circle cx="32" cy="54" r="5" fill="currentColor" />
+	<circle cx="16.44" cy="47.56" r="5" fill="currentColor" />
+	<circle cx="10" cy="32" r="5" fill="currentColor" />
+	<circle cx="16.44" cy="16.44" r="5" fill="currentColor" />
+	<line
+		x1="47.56"
+		y1="47.56"
+		x2="58"
+		y2="58"
+		stroke-width="10"
+		stroke-linecap="round"
+		stroke="currentColor"
+	/>
+</svg>
