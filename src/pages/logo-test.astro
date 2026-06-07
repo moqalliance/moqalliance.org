@@ -1,0 +1,198 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Logo Test" description="Adjust the pill position on the MoQ logo">
+	<header>
+		<h1>Logo Pill Position Test</h1>
+		<p class="lede">
+			Drag the slider to move the pill-shaped element closer to the
+			center of the circle or further away.
+		</p>
+	</header>
+
+	<section>
+		<div class="logo-test-controls">
+			<label for="offset">
+				Offset toward center: <span id="offset-value">4</span>
+			</label>
+			<input
+				type="range"
+				id="offset"
+				min="-6"
+				max="14"
+				step="0.5"
+				value="4"
+			/>
+		</div>
+
+		<div class="logo-test-controls">
+			<label for="length">
+				Pill length: <span id="length-value">14.76</span>
+			</label>
+			<input
+				type="range"
+				id="length"
+				min="0"
+				max="30"
+				step="0.5"
+				value="14.76"
+			/>
+		</div>
+
+		<div class="logo-test-views">
+			<div class="logo-test-view">
+				<h3>Small (44px)</h3>
+				<svg
+					id="logo-small"
+					width="44"
+					height="44"
+					viewBox="0 0 64 64"
+					xmlns="http://www.w3.org/2000/svg"
+					role="img"
+					aria-label="MoQ Alliance"
+				>
+					<circle cx="32" cy="10" r="5" fill="currentColor" />
+					<circle cx="47.56" cy="16.44" r="5" fill="currentColor" />
+					<circle cx="54" cy="32" r="5" fill="currentColor" />
+					<circle cx="32" cy="54" r="5" fill="currentColor" />
+					<circle cx="16.44" cy="47.56" r="5" fill="currentColor" />
+					<circle cx="10" cy="32" r="5" fill="currentColor" />
+					<circle cx="16.44" cy="16.44" r="5" fill="currentColor" />
+					<line
+						class="logo-pill"
+						x1="47.56"
+						y1="47.56"
+						x2="58"
+						y2="58"
+						stroke-width="10"
+						stroke-linecap="round"
+						stroke="currentColor"
+					/>
+				</svg>
+			</div>
+
+			<div class="logo-test-view">
+				<h3>Large (240px)</h3>
+				<svg
+					id="logo-large"
+					width="240"
+					height="240"
+					viewBox="0 0 64 64"
+					xmlns="http://www.w3.org/2000/svg"
+					role="img"
+					aria-label="MoQ Alliance"
+				>
+					<circle cx="32" cy="10" r="5" fill="currentColor" />
+					<circle cx="47.56" cy="16.44" r="5" fill="currentColor" />
+					<circle cx="54" cy="32" r="5" fill="currentColor" />
+					<circle cx="32" cy="54" r="5" fill="currentColor" />
+					<circle cx="16.44" cy="47.56" r="5" fill="currentColor" />
+					<circle cx="10" cy="32" r="5" fill="currentColor" />
+					<circle cx="16.44" cy="16.44" r="5" fill="currentColor" />
+					<line
+						class="logo-pill"
+						x1="47.56"
+						y1="47.56"
+						x2="58"
+						y2="58"
+						stroke-width="10"
+						stroke-linecap="round"
+						stroke="currentColor"
+					/>
+				</svg>
+			</div>
+		</div>
+
+		<p class="logo-test-output">
+			<code id="line-markup"></code>
+		</p>
+	</section>
+</Layout>
+
+<script>
+	// Original pill endpoints -> midpoint (52.78, 52.78) on the diagonal.
+	const ORIG_MID = { x: 52.78, y: 52.78 };
+	// Unit vector along the diagonal (pill axis) pointing outward.
+	const INV_SQRT2 = 1 / Math.SQRT2;
+
+	const offsetSlider = document.getElementById("offset") as HTMLInputElement;
+	const lengthSlider = document.getElementById("length") as HTMLInputElement;
+	const offsetLabel = document.getElementById("offset-value")!;
+	const lengthLabel = document.getElementById("length-value")!;
+	const markup = document.getElementById("line-markup")!;
+	const pills = document.querySelectorAll<SVGLineElement>(".logo-pill");
+
+	function update() {
+		const offset = parseFloat(offsetSlider.value);
+		const length = parseFloat(lengthSlider.value);
+
+		// Move the pill midpoint toward the center along the diagonal.
+		const midX = ORIG_MID.x - offset * INV_SQRT2;
+		const midY = ORIG_MID.y - offset * INV_SQRT2;
+
+		// Distribute the length equally on both sides of the midpoint.
+		const half = length / 2;
+		const hx = half * INV_SQRT2;
+		const hy = half * INV_SQRT2;
+
+		const x1 = (midX - hx).toFixed(2);
+		const y1 = (midY - hy).toFixed(2);
+		const x2 = (midX + hx).toFixed(2);
+		const y2 = (midY + hy).toFixed(2);
+
+		pills.forEach((pill) => {
+			pill.setAttribute("x1", x1);
+			pill.setAttribute("y1", y1);
+			pill.setAttribute("x2", x2);
+			pill.setAttribute("y2", y2);
+		});
+
+		offsetLabel.textContent = offset.toString();
+		lengthLabel.textContent = length.toString();
+		markup.textContent = `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke-width="10" stroke-linecap="round" />`;
+	}
+
+	offsetSlider.addEventListener("input", update);
+	lengthSlider.addEventListener("input", update);
+	update();
+</script>
+
+<style>
+	.logo-test-controls {
+		margin: 2rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 400px;
+	}
+	.logo-test-controls input[type="range"] {
+		width: 100%;
+	}
+	.logo-test-views {
+		display: flex;
+		align-items: flex-end;
+		gap: 3rem;
+		flex-wrap: wrap;
+		margin: 2rem 0;
+	}
+	.logo-test-view {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+	.logo-test-view svg {
+		color: #1a1a1a;
+		border: 1px dashed rgba(128, 128, 128, 0.4);
+	}
+	@media (prefers-color-scheme: dark) {
+		.logo-test-view svg {
+			color: #e8e8e8;
+		}
+	}
+	.logo-test-output code {
+		font-size: 0.85rem;
+		word-break: break-all;
+	}
+</style>
