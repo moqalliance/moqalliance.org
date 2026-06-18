@@ -1,5 +1,10 @@
 [
 	{
+		"name": "Akamai",
+		"url": "https://www.akamai.com",
+		"logo": "/logos/akamai.svg"
+	},
+	{
 		"name": "AWS",
 		"url": "https://aws.amazon.com",
 		"logo": "/logos/aws.png"
@@ -43,5 +48,10 @@
 		"name": "Mux",
 		"url": "https://mux.com",
 		"logo": "/logos/mux.svg"
+	},
+	{
+		"name": "OpenMoq",
+		"url": "https://openmoq.org",
+		"logo": "/logos/openmoq.svg"
 	}
 ]
