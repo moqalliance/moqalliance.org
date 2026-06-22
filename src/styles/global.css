@@ -290,6 +290,12 @@ a.talk:hover .talk-title {
 	opacity: 0.85;
 }
 
+.subscribe-status {
+	font-size: 0.85rem;
+	color: var(--muted);
+	margin: 0.75rem 0 0;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;

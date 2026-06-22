@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Logo from "../components/Logo.astro";
+import Subscribe from "../components/Subscribe.astro";
 import useCases from "../data/useCases.json";
 import getStarted from "../data/getStarted.json";
 import standards from "../data/standards.json";
@@ -134,18 +135,7 @@ const description =
 				</a>
 			</li>
 		</ul>
-		<p class="subscribe-label">Subscribe to MoQ Alliance updates:</p>
-		<form class="subscribe" action="#" method="post">
-			<label class="sr-only" for="email">Email</label>
-			<input
-				id="email"
-				type="email"
-				name="email"
-				placeholder="you@example.com"
-				required
-			/>
-			<button type="submit">Subscribe</button>
-		</form>
+		<Subscribe />
 	</section>
 
 	<footer>

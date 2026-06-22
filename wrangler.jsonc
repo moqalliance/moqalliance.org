@@ -13,6 +13,13 @@
 			"id": "c549aa2ae33f473fae96f07efce12f6a"
 		}
 	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "moqalliance-signups",
+			"database_id": "090a5b9b-409b-45cf-ae24-ebf28bd67907"
+		}
+	],
 	"observability": {
 		"enabled": true
 	}
