@@ -1,7 +1,12 @@
 ---
 // Newsletter signup form. POSTs to /api/subscribe which writes to D1.
-// After submission the endpoint redirects back with ?subscribed=ok|invalid|error;
-// the inline script translates that into an in-page status message.
+//
+// With JS: intercepted, submitted via fetch, status rendered in-place
+// without a page reload (preserves scroll position).
+//
+// Without JS: form submits normally, /api/subscribe returns a 303 to
+// /?subscribed=ok|invalid|error, and the inline script (if it ever runs)
+// would still render the message.
 ---
 
 <p class="subscribe-label">Subscribe to MoQ Alliance updates:</p>
@@ -21,21 +26,58 @@
 
 <script is:inline>
 	(() => {
-		const params = new URLSearchParams(window.location.search);
-		const state = params.get("subscribed");
-		if (!state) return;
-		const el = document.querySelector("[data-status]");
-		if (!el) return;
+		const form = document.querySelector("form.subscribe");
+		const statusEl = document.querySelector("[data-status]");
+		if (!form || !statusEl) return;
+
 		const messages = {
-			ok: "Thanks! You're on the list.",
+			ok: "Thanks, you're on the list.",
 			invalid: "That doesn't look like a valid email. Try again.",
-			error: "Something went wrong saving that. Please try again later.",
+			error: "Something went wrong. Please try again later.",
 		};
-		el.textContent = messages[state] || "";
-		el.hidden = !el.textContent;
-		// Drop the query param so a reload doesn't re-show the message.
-		const url = new URL(window.location.href);
-		url.searchParams.delete("subscribed");
-		window.history.replaceState({}, "", url.toString());
+
+		const showStatus = (status) => {
+			statusEl.textContent = messages[status] || messages.error;
+			statusEl.hidden = false;
+		};
+
+		// Translate any ?subscribed=… query param (from a no-JS fallback redirect)
+		// into the in-page status message, then strip the param.
+		const params = new URLSearchParams(window.location.search);
+		const initial = params.get("subscribed");
+		if (initial && messages[initial]) {
+			showStatus(initial);
+			const url = new URL(window.location.href);
+			url.searchParams.delete("subscribed");
+			window.history.replaceState({}, "", url.toString());
+		}
+
+		form.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			statusEl.hidden = true;
+			const button = form.querySelector("button");
+			if (button) button.disabled = true;
+
+			try {
+				const response = await fetch(form.action, {
+					method: "POST",
+					headers: { Accept: "application/json" },
+					body: new FormData(form),
+				});
+				let status = "error";
+				try {
+					const data = await response.json();
+					if (data && typeof data.status === "string") {
+						status = data.status;
+					}
+				} catch {}
+				showStatus(status);
+				if (status === "ok") form.reset();
+			} catch {
+				showStatus("error");
+			} finally {
+				if (button) button.disabled = false;
+			}
+		});
 	})();
 </script>

@@ -5,24 +5,40 @@ export const prerender = false;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function redirect(target: string): Response {
+type Status = "ok" | "invalid" | "error";
+
+function respond(
+	wantsJson: boolean,
+	status: Status,
+	httpStatus = 200,
+): Response {
+	if (wantsJson) {
+		return new Response(JSON.stringify({ status }), {
+			status: httpStatus,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
 	return new Response(null, {
 		status: 303,
-		headers: { Location: target },
+		headers: { Location: `/?subscribed=${status}` },
 	});
 }
 
 export const POST: APIRoute = async ({ request }) => {
+	const wantsJson = (request.headers.get("accept") || "").includes(
+		"application/json",
+	);
+
 	let email = "";
 	try {
 		const form = await request.formData();
 		email = String(form.get("email") ?? "").trim().toLowerCase();
 	} catch {
-		return redirect("/?subscribed=invalid");
+		return respond(wantsJson, "invalid", 400);
 	}
 
 	if (!email || email.length > 254 || !EMAIL_REGEX.test(email)) {
-		return redirect("/?subscribed=invalid");
+		return respond(wantsJson, "invalid", 400);
 	}
 
 	const ip =
@@ -30,7 +46,6 @@ export const POST: APIRoute = async ({ request }) => {
 		request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
 		"";
 
-	// Cloudflare attaches geolocation to the request via the cf object.
 	const cf = (request as unknown as { cf?: Record<string, unknown> }).cf ?? {};
 	const country = typeof cf.country === "string" ? cf.country : "";
 	const region = typeof cf.region === "string" ? cf.region : "";
@@ -41,7 +56,7 @@ export const POST: APIRoute = async ({ request }) => {
 	const db = (env as unknown as { DB: D1Database }).DB;
 	if (!db) {
 		console.error("D1 binding DB is missing");
-		return redirect("/?subscribed=error");
+		return respond(wantsJson, "error", 500);
 	}
 
 	try {
@@ -55,8 +70,8 @@ export const POST: APIRoute = async ({ request }) => {
 			.run();
 	} catch (err) {
 		console.error("Failed to record signup:", err);
-		return redirect("/?subscribed=error");
+		return respond(wantsJson, "error", 500);
 	}
 
-	return redirect("/?subscribed=ok");
+	return respond(wantsJson, "ok", 200);
 };
