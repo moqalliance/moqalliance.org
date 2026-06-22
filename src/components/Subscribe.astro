@@ -23,6 +23,10 @@
 	<button type="submit">Subscribe</button>
 </form>
 <p class="subscribe-status" data-status hidden></p>
+<p class="subscribe-privacy">
+	We store your email, IP address, and approximate location to send
+	Alliance updates.
+</p>
 
 <script is:inline>
 	(() => {
@@ -33,6 +37,7 @@
 		const messages = {
 			ok: "Thanks, you're on the list.",
 			invalid: "That doesn't look like a valid email. Try again.",
+			rate_limited: "Too many submissions. Try again in a moment.",
 			error: "Something went wrong. Please try again later.",
 		};
 

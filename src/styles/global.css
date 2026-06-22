@@ -296,6 +296,13 @@ a.talk:hover .talk-title {
 	margin: 0.75rem 0 0;
 }
 
+.subscribe-privacy {
+	font-size: 0.75rem;
+	color: var(--muted);
+	margin: 0.75rem 0 0;
+	line-height: 1.5;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;

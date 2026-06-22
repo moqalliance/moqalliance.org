@@ -5,7 +5,7 @@ export const prerender = false;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type Status = "ok" | "invalid" | "error";
+type Status = "ok" | "invalid" | "error" | "rate_limited";
 
 function respond(
 	wantsJson: boolean,
@@ -29,6 +29,31 @@ export const POST: APIRoute = async ({ request }) => {
 		"application/json",
 	);
 
+	const ip =
+		request.headers.get("cf-connecting-ip") ||
+		request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+		"";
+
+	const limiter = (
+		env as unknown as {
+			SUBSCRIBE_LIMITER?: {
+				limit: (opts: { key: string }) => Promise<{ success: boolean }>;
+			};
+		}
+	).SUBSCRIBE_LIMITER;
+	if (limiter && ip) {
+		try {
+			const { success } = await limiter.limit({ key: ip });
+			if (!success) {
+				return respond(wantsJson, "rate_limited", 429);
+			}
+		} catch (err) {
+			// Fail open on limiter errors — don't block legitimate signups
+			// because the rate limit infra hiccuped.
+			console.error("Rate limiter check failed:", err);
+		}
+	}
+
 	let email = "";
 	try {
 		const form = await request.formData();
@@ -40,11 +65,6 @@ export const POST: APIRoute = async ({ request }) => {
 	if (!email || email.length > 254 || !EMAIL_REGEX.test(email)) {
 		return respond(wantsJson, "invalid", 400);
 	}
-
-	const ip =
-		request.headers.get("cf-connecting-ip") ||
-		request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-		"";
 
 	const cf = (request as unknown as { cf?: Record<string, unknown> }).cf ?? {};
 	const country = typeof cf.country === "string" ? cf.country : "";

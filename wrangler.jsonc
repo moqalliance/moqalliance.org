@@ -20,6 +20,16 @@
 			"database_id": "090a5b9b-409b-45cf-ae24-ebf28bd67907"
 		}
 	],
+	"ratelimits": [
+		{
+			"name": "SUBSCRIBE_LIMITER",
+			"namespace_id": "1001",
+			"simple": {
+				"limit": 1,
+				"period": 60
+			}
+		}
+	],
 	"observability": {
 		"enabled": true
 	}
