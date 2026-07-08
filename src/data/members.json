@@ -55,6 +55,11 @@
 		"logo": "/logos/mux.svg"
 	},
 	{
+		"name": "OpenMoq",
+		"url": "https://openmoq.org",
+		"logo": "/logos/openmoq.svg"
+	},
+	{
 		"name": "Software Mansion",
 		"url": "https://swmansion.com",
 		"logo": "/logos/software-mansion.png"
