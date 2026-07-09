@@ -45,7 +45,7 @@
 		"logo": "/logos/moq-dev.svg"
 	},
 	{
-		"name": "Moqtail",
+		"name": "MOQtail",
 		"url": "https://github.com/moqtail",
 		"logo": "/logos/moqtail.png"
 	},
@@ -55,7 +55,7 @@
 		"logo": "/logos/mux.svg"
 	},
 	{
-		"name": "OpenMoq",
+		"name": "OpenMOQ",
 		"url": "https://openmoq.org",
 		"logo": "/logos/openmoq.svg"
 	},
