@@ -15,8 +15,8 @@
     "deploy:email": "wrangler deploy -c workers/email/wrangler.jsonc"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.6.0",
-    "astro": "^6.4.2",
+    "@astrojs/cloudflare": "^13.7.0",
+    "astro": "^6.4.8",
     "postal-mime": "^2.7.4"
   },
   "devDependencies": {
