@@ -93,7 +93,7 @@ ul li::before {
 
 .members {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 0.75rem;
 }
 
@@ -113,7 +113,7 @@ a.member:hover .member-logo {
 	align-items: center;
 	gap: 1.25rem;
 	padding: 1rem;
-	height: 64px;
+	min-height: 64px;
 	width: 100%;
 	box-sizing: border-box;
 	border: 1px solid var(--border);
@@ -133,9 +133,8 @@ a.member:hover .member-logo {
 	font-size: 0.9rem;
 	color: var(--fg);
 	min-width: 0;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	line-height: 1.2;
+	overflow-wrap: break-word;
 }
 
 dl {
@@ -369,7 +368,7 @@ code {
 		padding: 3rem 1.25rem 4rem;
 	}
 	.members {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 0.75rem;
 	}
 	h2 {
