@@ -30,6 +30,11 @@
 		"logo": "/logos/datum.svg"
 	},
 	{
+		"name": "Demuxed",
+		"url": "https://demuxed.com",
+		"logo": "/logos/demuxed.png"
+	},
+	{
 		"name": "Fastly",
 		"url": "https://fastly.com",
 		"logo": "/logos/fastly.svg"
