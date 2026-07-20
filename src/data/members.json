@@ -60,6 +60,11 @@
 		"logo": "/logos/mux.svg"
 	},
 	{
+		"name": "Norsk",
+		"url": "https://norsk.video",
+		"logo": "/logos/norsk.png"
+	},
+	{
 		"name": "OpenMOQ",
 		"url": "https://openmoq.org",
 		"logo": "/logos/openmoq.svg"
