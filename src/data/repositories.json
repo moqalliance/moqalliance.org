@@ -57,6 +57,13 @@
 		"category": "Tools and integrations",
 		"items": [
 			{
+				"name": "software-mansion-labs/moq-kit",
+				"url": "https://github.com/software-mansion-labs/moq-kit",
+				"stars": 23,
+				"language": "Swift + Kotlin",
+				"description": "Native client SDKs for iOS and Android to publish and play low-latency media streams over QUIC."
+			},
+			{
 				"name": "rafaelcaricio/gst-moq-pub",
 				"url": "https://github.com/rafaelcaricio/gst-moq-pub",
 				"stars": 17,
