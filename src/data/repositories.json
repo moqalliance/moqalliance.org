@@ -85,6 +85,13 @@
 				"description": "Player for CMAF media over MoQ Transport using MSE playback."
 			},
 			{
+				"name": "software-mansion-labs/react-native-moq",
+				"url": "https://github.com/software-mansion-labs/react-native-moq",
+				"stars": 7,
+				"language": "TypeScript",
+				"description": "React Native client SDK built on top of MoQKit."
+			},
+			{
 				"name": "gmarzot/aiomoqt",
 				"url": "https://github.com/gmarzot/aiomoqt",
 				"stars": 5,
