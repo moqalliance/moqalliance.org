@@ -552,6 +552,12 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 		border-bottom: 1px solid var(--line);
 	}
 
+	/* Second and later headings within a block need to breathe. The first one
+	   in a section already has the section's own padding above it. */
+	.block .h:not(:first-child) {
+		margin-top: 5rem;
+	}
+
 	.h {
 		margin: 0 0 1.5rem;
 		font-size: clamp(1.9rem, 5vw, 3.1rem);
