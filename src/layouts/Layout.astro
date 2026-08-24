@@ -6,6 +6,7 @@ interface Props {
 	description?: string;
 	noindex?: boolean;
 	og?: boolean;
+	wide?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
 	description,
 	noindex = false,
 	og = true,
+	wide = false,
 } = Astro.props;
 
 const siteUrl = "https://moqalliance.org";
@@ -58,7 +60,7 @@ const ogImage = `${siteUrl}/logo.svg`;
 		}
 	</head>
 	<body>
-		<main>
+		<main class={wide ? "wide" : undefined}>
 			<slot />
 		</main>
 	</body>

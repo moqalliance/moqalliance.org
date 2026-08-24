@@ -36,6 +36,12 @@ main {
 	padding: 5rem 1.5rem 6rem;
 }
 
+main.wide {
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
 .logo {
 	display: block;
 	width: 44px;

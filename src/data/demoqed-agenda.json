@@ -1,0 +1,80 @@
+[
+	{
+		"kind": "break",
+		"time": "12:30pm",
+		"title": "Doors open, coffee"
+	},
+	{
+		"kind": "break",
+		"time": "1:00pm",
+		"title": "Welcome from the MoQ Alliance"
+	},
+	{
+		"kind": "talk",
+		"slot": "01",
+		"time": "1:10pm",
+		"title": "To be announced",
+		"speaker": "Speaker TBA",
+		"hint": "Shipping a live video product on MoQ, start to finish"
+	},
+	{
+		"kind": "talk",
+		"slot": "02",
+		"time": "1:40pm",
+		"title": "To be announced",
+		"speaker": "Speaker TBA",
+		"hint": "Scaling delivery to a global audience"
+	},
+	{
+		"kind": "talk",
+		"slot": "03",
+		"time": "2:10pm",
+		"title": "To be announced",
+		"speaker": "Speaker TBA",
+		"hint": "Sub-second live: encoder to glass"
+	},
+	{
+		"kind": "break",
+		"time": "2:40pm",
+		"title": "Break"
+	},
+	{
+		"kind": "talk",
+		"slot": "04",
+		"time": "3:00pm",
+		"title": "To be announced",
+		"speaker": "Speaker TBA",
+		"hint": "Migrating a production workload off WebRTC or HLS"
+	},
+	{
+		"kind": "talk",
+		"slot": "05",
+		"time": "3:30pm",
+		"title": "To be announced",
+		"speaker": "Speaker TBA",
+		"hint": "Building the client: players, browsers, and mobile"
+	},
+	{
+		"kind": "talk",
+		"slot": "06",
+		"time": "4:00pm",
+		"title": "To be announced",
+		"speaker": "Speaker TBA",
+		"hint": "Running MoQ in production: what broke and what we learned"
+	},
+	{
+		"kind": "break",
+		"time": "4:30pm",
+		"title": "Demos and lightning talks"
+	},
+	{
+		"kind": "break",
+		"time": "5:00pm",
+		"title": "Talks wrap"
+	},
+	{
+		"kind": "break",
+		"time": "6:00pm",
+		"title": "Happy hour, until 8:00pm"
+	}
+]
