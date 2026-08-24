@@ -21,7 +21,9 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 				<p class="eyebrow">The MoQ Alliance conference</p>
 
 				<h1 class="wordmark">
-					<span class="w-dim">DE</span><span class="w-moq">MOQ</span
+					<span class="w-dim">DE</span><span class="moq-stack"
+						><span class="moq-glow" aria-hidden="true">MOQ</span
+						><span class="w-moq">MOQ</span></span
 					><span class="w-dim">ED</span>
 				</h1>
 
@@ -298,6 +300,28 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 		text-shadow: 0 0 0.28em rgba(255, 46, 154, 0.4);
 	}
 
+	/*
+	 * The glow is a separate SDR copy sitting behind the HDR text. It has to be
+	 * its own element: a filter applied to .w-moq itself would rasterise the
+	 * AVIF into an SDR buffer and clamp away the headroom. Filters are free
+	 * here because this layer was never HDR to begin with.
+	 */
+	.moq-stack {
+		position: relative;
+		display: inline-block;
+	}
+
+	.moq-glow {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		white-space: nowrap;
+		pointer-events: none;
+		user-select: none;
+		color: var(--magenta);
+	}
+
 	@supports (
 		(-webkit-background-clip: text) or (background-clip: text)
 	) {
@@ -311,6 +335,25 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 			-webkit-text-fill-color: transparent;
 			text-shadow: none;
 			dynamic-range-limit: no-limit;
+			position: relative;
+			z-index: 1;
+		}
+
+		.moq-glow {
+			background-image: linear-gradient(
+				100deg,
+				var(--magenta) 0%,
+				var(--flare) 52%,
+				var(--acid) 100%
+			);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			filter: blur(0.05em) drop-shadow(0 0 0.16em rgba(255, 46, 154, 0.5))
+				drop-shadow(0 0 0.34em rgba(214, 255, 63, 0.28));
 		}
 	}
 
