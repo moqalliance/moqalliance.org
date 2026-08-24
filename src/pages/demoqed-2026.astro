@@ -239,9 +239,6 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 		--accent: var(--acid);
 		--accent-ink: #16220a;
 
-		/* Opt into the display's full brightness range where available. */
-		dynamic-range-limit: no-limit;
-
 		background: #050507;
 		font-family:
 			"JetBrains Mono", "SF Mono", ui-monospace, Menlo, Monaco, Consolas,
@@ -285,8 +282,18 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 	 * re-declared in the Rec.2100 HLG space, where values approaching 1.0 map
 	 * above SDR white and the text physically glows.
 	 */
-	/* Solid fallback first; the gradient needs background-clip to exist. */
+	/*
+	 * HDR wordmark. The brightness comes from the image, not from CSS colours:
+	 * a 489-byte AVIF encoded in Rec.2100 PQ / BT.2020, whose stops all peak at
+	 * 4000 cd/m2 (PQ 0.9026). SDR reference white is 203 cd/m2, so on a display
+	 * with headroom these letters render far brighter than the page white.
+	 * background-clip:text masks that image to the glyphs.
+	 *
+	 * CSS color(rec2100-*) does NOT produce HDR: browsers parse it and clamp.
+	 * An HDR image is currently the only reliable route.
+	 */
 	.w-moq {
+		--paint: url("data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUEAAAD5bWV0YQAAAAAAAAAvaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAFBpY3R1cmVIYW5kbGVyAAAAAA5waXRtAAAAAAABAAAAHmlsb2MAAAAARAAAAQABAAAAAQAAASEAAADIAAAAKGlpbmYAAAAAAAEAAAAaaW5mZQIAAAAAAQAAYXYwMUNvbG9yAAAAAGppcHJwAAAAS2lwY28AAAAUaXNwZQAAAAAAAAV4AAAAtAAAABBwaXhpAAAAAAMKCgoAAAAMYXYxQ4EhQAAAAAATY29scm5jbHgACQAQAAmAAAAAF2lwbWEAAAAAAAAAAQABBAECgwQAAADQbWRhdAoOIAAADT13sz/+eEiATIAytQEUACHAAAQQIgFEAE048ngdw001dzHeuqjBBV58XHxWTOJ/mKS8KcBVmwDdtD3ctK5bcqJh7LO5oEmjbeQ/51z+O7Xx3V8afBc77o4yqwwQUtXOsD2jHB8vgG+YMpEs/h7jN0VG2czzv/x/BmngBU/7XmEt16QNezPY4HPoJyAu9awN9/iYur8NS0dYrTbsLIhOH8CYalGpURyv5pc+1SDW7u+sxNWETbf3tf1u/NJdHIrq0thY");
 		color: var(--magenta);
 		text-shadow: 0 0 0.28em rgba(255, 46, 154, 0.4);
 	}
@@ -295,18 +302,15 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 		(-webkit-background-clip: text) or (background-clip: text)
 	) {
 		.w-moq {
-			background-image: linear-gradient(
-				100deg,
-				var(--magenta) 0%,
-				var(--flare) 52%,
-				var(--acid) 100%
-			);
+			background-image: var(--paint);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
 			-webkit-background-clip: text;
 			background-clip: text;
 			color: transparent;
+			-webkit-text-fill-color: transparent;
 			text-shadow: none;
-			filter: drop-shadow(0 0 0.16em rgba(255, 46, 154, 0.4))
-				drop-shadow(0 0 0.3em rgba(214, 255, 63, 0.22));
+			dynamic-range-limit: no-limit;
 		}
 	}
 
@@ -314,7 +318,7 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 		color: var(--ink);
 	}
 
-	/* The Rec.2100 overrides live at the end of this file so they win on
+	/* Wider-gamut P3 overrides live at the end of this file so they win on
 	   source order against the base colours declared below. */
 
 	/* ---------- hero ---------- */
@@ -781,38 +785,19 @@ const talkCount = agenda.filter((i) => i.kind === "talk").length;
 		}
 	}
 
-	/* ---------- HDR overrides ---------- */
+	/* ---------- wider gamut ---------- */
 
 	/*
-	 * Last in the file on purpose. Values approaching 1.0 in Rec.2100 HLG map
-	 * above SDR white, so on a display with headroom these elements render
-	 * brighter than the surrounding page white.
+	 * Last in the file on purpose. On a P3 display these render more saturated
+	 * than sRGB can express. Hues are matched to the sRGB values above, so
+	 * non-P3 displays lose nothing but the extra vividness.
 	 */
-	@supports (color: color(rec2100-hlg 1 1 1)) {
-		@media (dynamic-range: high) {
-			.w-moq {
-				background-image: linear-gradient(
-					100deg,
-					color(rec2100-hlg 1 0.28 0.7) 0%,
-					color(rec2100-hlg 1 0.58 0.22) 52%,
-					color(rec2100-hlg 0.85 1 0.28) 100%
-				);
-			}
-			.w-dim,
-			.stat-n,
-			.price {
-				color: color(rec2100-hlg 1 1 1);
-			}
-			.btn-primary {
-				background: color(rec2100-hlg 0.85 1 0.28);
-				border-color: color(rec2100-hlg 0.85 1 0.28);
-			}
-			.eyebrow {
-				color: color(rec2100-hlg 1 0.28 0.7);
-			}
-			.row-slot {
-				color: color(rec2100-hlg 1 0.28 0.7);
-			}
+	@supports (color: color(display-p3 1 1 1)) {
+		.demoqed {
+			--acid: color(display-p3 0.82 1 0.22);
+			--magenta: color(display-p3 1 0.12 0.58);
+			--flare: color(display-p3 1 0.45 0.12);
 		}
 	}
+
 </style>
