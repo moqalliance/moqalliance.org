@@ -50,6 +50,13 @@
 				"stars": 50,
 				"language": "Go",
 				"description": "Experimental Meta relay optimized for low-latency media transfer, implementing IETF MoQ."
+			},
+			{
+				"name": "floatdrop/moq-go",
+				"url": "https://github.com/floatdrop/moq-go",
+				"stars": 1,
+				"language": "Go",
+				"description": "Go implementation of the IETF MoQ Transport protocol and relay."
 			}
 		]
 	},
