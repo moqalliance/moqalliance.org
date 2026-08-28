@@ -98,5 +98,10 @@
 		"name": "Software Mansion",
 		"url": "https://swmansion.com",
 		"logo": "/logos/software-mansion.png"
+	},
+	{
+		"name": "Wowza",
+		"url": "https://www.wowza.com",
+		"logo": "/logos/wowza.png"
 	}
 ]
