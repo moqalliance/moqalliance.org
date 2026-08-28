@@ -3,6 +3,8 @@
 // Deliberately standalone: no global layout, no nav, no Tailwind. Just a very
 // tall stack of DE MOQ ED where the MOQ column walks the color wheel on the
 // way down.
+import members from "../data/members.json";
+
 const ROWS = 16;
 
 // Start on the moq.dev green and make exactly one lap so the bottom row lands
@@ -19,26 +21,6 @@ const agenda = [
 	["1:00", "talks and stuff"],
 	["6:00", "happy hour"],
 	["8:00", "doors close"],
-];
-
-const members = [
-	["Akamai", "https://www.akamai.com", "akamai.svg"],
-	["AWS", "https://aws.amazon.com", "aws.png"],
-	["Bitmovin", "https://bitmovin.com", "bitmovin.png"],
-	["Cisco", "https://cisco.com", "cisco.svg"],
-	["Cloudflare", "https://cloudflare.com", "cloudflare.svg"],
-	["Datum", "https://www.datum.net", "datum.svg"],
-	["Demuxed", "https://demuxed.com", "demuxed.png"],
-	["Fastly", "https://fastly.com", "fastly.svg"],
-	["Iroh", "https://iroh.computer", "iroh.png"],
-	["moq.pro", "https://moq.pro", "https://moq.dev/layout/pro-icon.svg"],
-	["MOQtail", "https://github.com/moqtail", "moqtail.png"],
-	["Mux", "https://mux.com", "mux.svg"],
-	["Norsk", "https://norsk.video", "norsk.png"],
-	["OpenMOQ", "https://openmoq.org", "openmoq.svg"],
-	["Qualabs", "https://qualabs.com", "qualabs.svg"],
-	["Red5", "https://www.red5.net", "red5.png"],
-	["Software Mansion", "https://swmansion.com", "software-mansion.png"],
 ];
 
 const title = "DEMOQED";
@@ -414,18 +396,21 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 			.aside a.member::after {
 				content: attr(data-name);
 				position: absolute;
-				inset: auto 0 0;
-				padding: 0.25rem 0.4rem;
-				background: rgb(8 7 10 / 90%);
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.5rem;
+				background: rgb(8 7 10 / 86%);
 				color: var(--paper);
-				font-size: 0.55rem;
+				font-size: 0.65rem;
 				font-weight: 500;
 				letter-spacing: 0.08em;
 				line-height: 1.2;
 				text-align: center;
 				text-transform: uppercase;
-				transform: translateY(100%);
-				transition: transform 120ms ease;
+				opacity: 0;
+				transition: opacity 120ms ease;
 			}
 
 			.member img {
@@ -448,7 +433,7 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 
 			.member:hover::after,
 			.member:focus-visible::after {
-				transform: translateY(0);
+				opacity: 1;
 			}
 
 			.join {
@@ -765,7 +750,7 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 									</div>
 								</div>
 								<ul class="member-wall" aria-label="MoQ Alliance members">
-									{members.map(([name, url, logo]) => (
+									{members.map(({ name, url, logo }) => (
 										<li>
 											<a
 												class="member"
@@ -776,7 +761,7 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 											>
 												<img
 													class:list={{ "member-logo-large": name === "Mux" || name === "Red5" }}
-													src={logo.startsWith("/") || logo.startsWith("http") ? logo : `/logos/${logo}`}
+													src={logo}
 													alt={name}
 													loading="lazy"
 													referrerpolicy="no-referrer"
