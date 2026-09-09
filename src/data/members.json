@@ -20,6 +20,11 @@
 		"logo": "/logos/bitmovin.png"
 	},
 	{
+		"name": "Broadpeak",
+		"url": "https://broadpeak.tv",
+		"logo": "/logos/broadpeak.png"
+	},
+	{
 		"name": "CDN77",
 		"url": "https://www.cdn77.com",
 		"logo": "/logos/cdn77.svg"
