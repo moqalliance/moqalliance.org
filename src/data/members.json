@@ -50,6 +50,11 @@
 		"logo": "/logos/demuxed.png"
 	},
 	{
+		"name": "EZDRM",
+		"url": "https://www.ezdrm.com",
+		"logo": "/logos/ezdrm.svg"
+	},
+	{
 		"name": "Fastly",
 		"url": "https://fastly.com",
 		"logo": "/logos/fastly.svg"
