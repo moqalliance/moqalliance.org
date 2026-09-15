@@ -105,6 +105,11 @@
 		"logo": "/logos/software-mansion.png"
 	},
 	{
+		"name": "Vindral",
+		"url": "https://vindral.com",
+		"logo": "/logos/vindral.svg"
+	},
+	{
 		"name": "Wowza",
 		"url": "https://www.wowza.com",
 		"logo": "/logos/wowza.png"
