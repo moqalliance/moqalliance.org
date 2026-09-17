@@ -105,6 +105,11 @@
 		"logo": "/logos/software-mansion.png"
 	},
 	{
+		"name": "Varnish",
+		"url": "https://www.varnish-software.com",
+		"logo": "/logos/varnish.svg"
+	},
+	{
 		"name": "Wowza",
 		"url": "https://www.wowza.com",
 		"logo": "/logos/wowza.png"
