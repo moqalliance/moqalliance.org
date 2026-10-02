@@ -60,6 +60,11 @@
 		"logo": "/logos/fastly.svg"
 	},
 	{
+		"name": "Intel",
+		"url": "https://www.intel.com",
+		"logo": "/logos/intel.svg"
+	},
+	{
 		"name": "Iroh",
 		"url": "https://iroh.computer",
 		"logo": "/logos/iroh.png"
