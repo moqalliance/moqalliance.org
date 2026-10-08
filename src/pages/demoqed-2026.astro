@@ -17,10 +17,22 @@ const rows = Array.from({ length: ROWS }, (_, i) => ({
 }));
 
 const agenda = [
-	["12:30", "doors open · grab lunch"],
-	["1:00", "talks and stuff"],
-	["5:00", "happy hour + bites"],
-	["6:00", "tab closed"],
+	{
+		speaker: "Aman Sharma, Konstantin Tsoy",
+		title: "Shipping MoQ for Instagram and Facebook Live Ingest",
+	},
+	{ speaker: "Mike English", title: "Ham radio? And MoQ?" },
+	{ speaker: "David von Wrangel", title: "MoQ beyond media" },
+	{ speaker: "Sam Bhattacharyya", title: "State of WebCodecs in 2026" },
+	{
+		speaker: "Vanessa Pyne",
+		title: "Do you even bench bro? - Livestreaming a LaserDisc to benchmark MoQ vs HLS",
+	},
+	{ speaker: null, title: "Break" },
+	{ speaker: "Will Law", title: "I'm streaming MOQ - huh?" },
+	{ speaker: "Alan Frindell", title: "Scaling the OpenMOQ MOQX Relay" },
+	{ speaker: "Luke Curley", title: "Voice AI with MoQ" },
+	{ speaker: null, title: "Lightning talks" },
 ];
 
 const speakerGroups = [
@@ -624,7 +636,7 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 
 			.agenda li {
 				display: grid;
-				grid-template-columns: 5rem 1fr;
+				grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
 				gap: 1.25rem;
 				padding: 0.85rem 0;
 				border-bottom: 1px solid rgb(8 7 10 / 24%);
@@ -632,8 +644,13 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 				text-transform: uppercase;
 			}
 
-			.agenda time {
+			.agenda-speaker {
 				color: hsl(var(--accent-h) 70% 30%);
+				font-weight: 500;
+			}
+
+			.agenda li.agenda-wide {
+				grid-template-columns: 1fr;
 				font-weight: 500;
 			}
 
@@ -831,8 +848,8 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 				}
 
 				.agenda li {
-					grid-template-columns: 4rem 1fr;
-					gap: 0.75rem;
+					grid-template-columns: 1fr;
+					gap: 0.2rem;
 				}
 
 				.button {
@@ -1015,7 +1032,7 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 							<section class="aside" style="--accent-h:325">
 								<div class="schedule-head">
 									<div>
-										<p class="kicker">agenda · program in progress</p>
+										<p class="kicker">agenda · full program</p>
 										<h2>Schedule</h2>
 									</div>
 									<div class="ticket-summary">
@@ -1033,10 +1050,10 @@ const socialImage = "https://moqalliance.org/demoqed-2026/social.png";
 									</div>
 				</div>
 				<ol class="agenda">
-									{agenda.map(([time, item]) => (
-										<li>
-											<time>{time}</time>
-											<span>{item}</span>
+									{agenda.map(({ speaker, title }) => (
+										<li class:list={{ "agenda-wide": !speaker }}>
+											{speaker && <span class="agenda-speaker">{speaker}</span>}
+											<span>{title}</span>
 										</li>
 					))}
 				</ol>
