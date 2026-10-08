@@ -14,14 +14,19 @@ const description =
 	<header>
 		<Logo />
 		<h1>MoQ Alliance</h1>
-		<a class="event-notice" href="/demoqed-2026">
-			<span class="event-notice-label">[new]</span>
-			<span>
-				We're organizing a MoQ conference this October. Check out
-				<strong>DEMOQED</strong>.
-			</span>
-			<span class="event-notice-arrow" aria-hidden="true">&rarr;</span>
-		</a>
+		<div class="notices" data-expiring-notices>
+			<a class="event-notice discord-notice" href="https://discord.gg/neXqzCXsgD">
+				<strong>Join the Discord</strong>
+				<span class="event-notice-arrow" aria-hidden="true">&rarr;</span>
+			</a>
+			<a class="event-notice" href="/demoqed-2026">
+				<span class="event-notice-label">[today]</span>
+				<span>
+					<strong>DEMOQED</strong> is today in San Francisco.
+				</span>
+				<span class="event-notice-arrow" aria-hidden="true">&rarr;</span>
+			</a>
+		</div>
 		<p class="lede">
 			The MoQ Alliance is an industry organization dedicated to making
 			Media over QUIC (MoQ) a successful, open, and interoperable
@@ -161,14 +166,33 @@ const description =
 		<p>moqalliance.org</p>
 	</footer>
 
+	<script>
+		const notices = document.querySelector("[data-expiring-notices]");
+		const expiresAt = new Date("2026-10-09T00:00:00-07:00").getTime();
+
+		if (notices) {
+			const removeExpiredNotices = () => {
+				if (Date.now() >= expiresAt) notices.remove();
+			};
+
+			removeExpiredNotices();
+			setTimeout(removeExpiredNotices, Math.max(0, expiresAt - Date.now()));
+		}
+	</script>
+
 	<style>
+		.notices {
+			display: grid;
+			gap: 0.75rem;
+			margin: 0 0 3.5rem;
+		}
+
 		.event-notice {
 			display: grid;
 			grid-template-columns: auto minmax(0, 1fr) auto;
 			align-items: center;
 			gap: 0.75rem;
 			box-sizing: border-box;
-			margin: 0 0 3.5rem;
 			padding: 0.65rem 0.9rem;
 			border: 1px solid var(--fg);
 			background: var(--fg);
@@ -177,6 +201,12 @@ const description =
 			line-height: 1.4;
 			text-decoration: none;
 			transition: opacity 0.15s ease;
+		}
+
+		.discord-notice {
+			grid-template-columns: minmax(0, 1fr) auto;
+			padding: 1rem 1.1rem;
+			font-size: 1rem;
 		}
 
 		.event-notice:hover {
@@ -204,9 +234,16 @@ const description =
 		}
 
 		@media (max-width: 520px) {
-			.event-notice {
+			.notices {
 				margin-bottom: 2.75rem;
+			}
+
+			.event-notice {
 				padding: 0.7rem 0.85rem;
+			}
+
+			.discord-notice {
+				padding: 0.9rem;
 			}
 		}
 	</style>
